@@ -6,3 +6,4 @@ section 4 of the unreal udemy course
 
 ## Lecture list
 * BT01 Intro
+* BT02 Game Design Document (GDD)
