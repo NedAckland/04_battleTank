@@ -6,8 +6,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
 
-
-void ATankPlayerController::BeginPlay() 
+void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	auto ControlledTank = GetControlledTank();
@@ -21,10 +20,25 @@ void ATankPlayerController::BeginPlay()
 	}
 }
 
+void ATankPlayerController::Tick(float DeltaTime )
+{
+	Super::Tick( DeltaTime );
+	AimTowardsCrosshair();
+	///UE_LOG(LogTemp, Warning, TEXT("Player controller Ticking"));
+}
 
 ATank* ATankPlayerController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
 	
 	UE_LOG(LogTemp, Warning, TEXT("%s tank"))
+}
+
+void ATankPlayerController::AimTowardsCrosshair()
+{
+	if (!GetControlledTank()) { return; }
+	//get world location if linetrace through crosshair
+	// if hit landscape
+		//tell controltank to aim at point
+
 }
