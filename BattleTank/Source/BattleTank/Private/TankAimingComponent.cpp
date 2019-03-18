@@ -37,7 +37,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 			false,
 			0,
 			0,
-			ESuggestProjVelocityTraceOption::DoNotTrace
+			ESuggestProjVelocityTraceOption::DoNotTrace//must be presant to prevent bug
 		);
 			if (bHaveAimSolution)
 			{
@@ -62,5 +62,5 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 	auto DeltaRotator = AimAsRotator - BarrelRotator;
 	///UE_LOG(LogTemp, Warning, TEXT("AimAsRotator: %s"), *AimAsRotator.ToString())
 
-	Barrel->Elevate(5); //TODO remove magic number
+	Barrel->Elevate(DeltaRotator.Pitch); //TODO remove magic number
 }

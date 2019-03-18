@@ -2,7 +2,7 @@
 
 
 #include "Public/TankPlayerController.h"
-
+#include "Tank.h"
 #include "Classes/Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
