@@ -4,9 +4,9 @@
 
 
 
-void UTankBarrel::Elevate(float DegreesPerSecond)
+void UTankBarrel::Elevate(float RelativeSpeed)
 {
-	UE_LOG(LogTemp, Warning, TEXT("BarrelElevate Called"))
+
 	///move the barrel the right amount this frame
 	///given a max elevation speed, the frame time
 }
