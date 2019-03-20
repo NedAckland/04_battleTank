@@ -6,19 +6,23 @@
 
 void UTankMovementComponent::Initialise(UTankTracks_2* LeftTrackToSet, UTankTracks_2* RightTrackToSet)
 {
-	if (!LeftTrackToSet || !RightTrackToSet) { return; }
 	LeftTrack = LeftTrackToSet;
 	RightTrack = RightTrackToSet;
-
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
 {
-
-	//auto Name = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("Intend Move Forward: %f"), Throw)
-
+	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-	//TODO prevent doouble spped due to dual controls used
+	//TODO prevent double spped due to dual controls used
 }
+
+void UTankMovementComponent::IntendTurnRight(float Throw)
+{
+	if (!LeftTrack || !RightTrack) { return; }
+	LeftTrack->SetThrottle(Throw);
+	RightTrack->SetThrottle(-Throw);
+	//TODO prevent double spped due to dual controls used
+}
+
