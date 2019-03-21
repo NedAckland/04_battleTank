@@ -2,10 +2,10 @@
 
 #include "Tank.h"
 #include "GameFramework/Actor.h"
+#include "TankBarrel.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "TankMovementComponent.h"
-#include "TankBarrel.h"
 #include"GameFramework/Character.h"
 
 
@@ -13,7 +13,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay(); //needed for bp begin play to run!!
 	auto TankName = GetName();
-	UE_LOG(LogTemp, Warning, TEXT(" %s DONKEY: Tank C++ Begin Play "), *TankName)
+	///UE_LOG(LogTemp, Warning, TEXT(" %s DONKEY: Tank C++ Begin Play "), *TankName)
 }
 
 // Sets default values
@@ -22,7 +22,7 @@ ATank::ATank()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	auto TankName = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%S DONKEY: Tank C++ Construct "), *TankName)
+	///UE_LOG(LogTemp, Warning, TEXT("%S DONKEY: Tank C++ Construct "), *TankName)
 }
 
 void ATank::AimAt(FVector HitLocation)
