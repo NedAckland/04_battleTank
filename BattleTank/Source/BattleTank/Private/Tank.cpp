@@ -12,7 +12,8 @@
 void ATank::BeginPlay()
 {
 	Super::BeginPlay(); //needed for bp begin play to run!!
-	UE_LOG(LogTemp, Warning, TEXT("DONKEY: Tank C++ Begin Play "))
+	auto TankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT(" %s DONKEY: Tank C++ Begin Play "), *TankName)
 }
 
 // Sets default values
