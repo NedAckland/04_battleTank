@@ -1,15 +1,25 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// Copyright Foxwoods studio's
 
 #include "Public/TankPlayerController.h"
+#include "TankAimingComponent.h"
 #include "Tank.h"
 #include "Classes/Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
 
+
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	if (AimingComponent)
+	{
+		FoundAimingComponent(AimingComponent);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Player controller cant find aiming component at begin play"));
+	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime )
@@ -31,7 +41,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	if (!GetControlledTank()) { return; }
 
 	FVector HitLocation; // OUT Parameter
-	if (GetSightRayHitLocation(HitLocation)) // has "side efcct", ius going to line trace
+	if (GetSightRayHitLocation(HitLocation)) // has "side efcct", is going to line trace
 	{
 		GetControlledTank()->AimAt(HitLocation);
 	}
