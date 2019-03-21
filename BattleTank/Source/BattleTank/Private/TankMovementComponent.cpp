@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Foxwoods studio's
 
 
 #include "TankMovementComponent.h"
@@ -20,6 +20,7 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
+	///UE_LOG(LogTemp, Warning, TEXT("right %f, Forward %f:"), RightThrow, ForwardThrow)
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)
@@ -27,7 +28,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-	//TODO prevent double spped due to dual controls used
 }
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
@@ -35,6 +35,5 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 	if (!LeftTrack || !RightTrack) { return; }
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
-	//TODO prevent double spped due to dual controls used
 }
 

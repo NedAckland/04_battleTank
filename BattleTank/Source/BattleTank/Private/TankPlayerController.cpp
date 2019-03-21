@@ -23,7 +23,7 @@ ATank* ATankPlayerController::GetControlledTank() const
 {
 	return Cast<ATank>(GetPawn());
 	
-	//UE_LOG(LogTemp, Warning, TEXT("%s tank"))
+
 }
 
 void ATankPlayerController::AimTowardsCrosshair()
