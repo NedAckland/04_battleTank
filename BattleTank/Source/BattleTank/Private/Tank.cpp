@@ -4,15 +4,11 @@
 #include "GameFramework/Actor.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "TankAimingComponent.h"
 #include"GameFramework/Character.h"
 
 void ATank::BeginPlay()
 {
 	Super::BeginPlay(); //needed for bp begin play to run!!
-	auto TankName = GetName();
-	///UE_LOG(LogTemp, Warning, TEXT(" %s DONKEY: Tank C++ Begin Play "), *TankName)
-	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 // Sets default values
@@ -22,12 +18,6 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 	auto TankName = GetName();
 	///UE_LOG(LogTemp, Warning, TEXT("%S DONKEY: Tank C++ Construct "), *TankName)
-}
-
-void ATank::AimAt(FVector HitLocation)
-{
-	if (!ensure(TankAimingComponent)) { return; }
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
 void ATank::Fire()
@@ -43,7 +33,7 @@ void ATank::Fire()
 			Barrel->GetSocketLocation(FName("Projectile")),
 			Barrel->GetSocketRotation(FName("Projectile"))
 			);
-		Projectile->LaunchProjectile(LaunchSpeed);
+	//	Projectile->LaunchProjectile(LaunchSpeed);
 		LastFireTime = FPlatformTime::Seconds();
 	}
 }
