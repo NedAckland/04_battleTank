@@ -4,7 +4,7 @@
 #include "Tank.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
-
+//depends on movement component via pathfinding system
 
 void ATankAIController::BeginPlay()
 {
@@ -25,7 +25,4 @@ void ATankAIController::Tick(float DeltaTime)
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());	
 		ControlledTank->Fire();//TODO limit fire rate
 	}
-
 }
-
-

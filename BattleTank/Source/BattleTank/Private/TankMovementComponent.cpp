@@ -1,6 +1,5 @@
 // Copyright Foxwoods studio's
 
-
 #include "TankMovementComponent.h"
 #include "TankTracks_2.h"
 
@@ -20,7 +19,6 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 
 	auto RightThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
 	IntendTurnRight(RightThrow);
-
 }
 
 void UTankMovementComponent::IntendMoveForward(float Throw)

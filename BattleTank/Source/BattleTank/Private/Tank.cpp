@@ -5,9 +5,7 @@
 #include "TankBarrel.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
-#include "TankMovementComponent.h"
 #include"GameFramework/Character.h"
-
 
 void ATank::BeginPlay()
 {
@@ -38,7 +36,6 @@ void ATank::Fire()
 
 	if (IsReloaded) 
 	{
-
 		//spawn projectile at socket location from barrel
 		auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 			ProjectileBlueprint,

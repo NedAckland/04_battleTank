@@ -2,7 +2,6 @@
 
 #include "TankTracks_2.h"
 
-
 void UTankTracks_2::SetThrottle(float Throttle)
 {
 	auto ForceApplied = GetForwardVector() * Throttle * TrackMaxDrivingForce;
@@ -10,4 +9,3 @@ void UTankTracks_2::SetThrottle(float Throttle)
 	auto TankRoot = Cast<UPrimitiveComponent>( GetOwner()->GetRootComponent());
 	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
 }
-
