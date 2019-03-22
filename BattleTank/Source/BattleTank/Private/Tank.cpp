@@ -12,6 +12,7 @@ void ATank::BeginPlay()
 	Super::BeginPlay(); //needed for bp begin play to run!!
 	auto TankName = GetName();
 	///UE_LOG(LogTemp, Warning, TEXT(" %s DONKEY: Tank C++ Begin Play "), *TankName)
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
 }
 
 // Sets default values
