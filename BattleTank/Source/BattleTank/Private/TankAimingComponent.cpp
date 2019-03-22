@@ -17,6 +17,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	Super::BeginPlay();
 	// so first fire is after initial reload
 	LastFireTime = FPlatformTime::Seconds();
 }
@@ -27,6 +28,7 @@ void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickTy
 	{
 		FiringState = EFiringState::Reloading;
 	}
+	//TODO handle aiming and locked states
 }
 
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
