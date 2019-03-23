@@ -1,5 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Engine/World.h"
 #include "TankAimingComponent.h"
 #include "Projectile.h"
 #include "TankBarrel.h"
@@ -19,16 +20,30 @@ void UTankAimingComponent::BeginPlay()
 {
 	Super::BeginPlay();
 	// so first fire is after initial reload
-	LastFireTime = FPlatformTime::Seconds();
+	LastFireTime = GetWorld()->GetTimeSeconds();
 }
 
 void UTankAimingComponent::TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction)
 {
-	if ((FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds)
+	if ((GetWorld()->GetTimeSeconds() - LastFireTime) < ReloadTimeInSeconds)
 	{
 		FiringState = EFiringState::Reloading;
 	}
-	//TODO handle aiming and locked states
+	else if (IsBarrelMoving())
+	{
+		FiringState = EFiringState::Aiming;
+	}
+	else 
+	{
+		FiringState = EFiringState::Locked;
+	}
+}
+
+bool UTankAimingComponent::IsBarrelMoving()
+{
+	if (!ensure(Barrel)) { return false; }
+	auto BarrelForward = Barrel->GetForwardVector();
+	return !BarrelForward.Equals(AimDirection, 0.01);//if ! vector are equal
 }
 
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
@@ -56,9 +71,11 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 		);
 			if (bHaveAimSolution)
 			{
-				auto AimDirection = OutLaunchVelocity.GetSafeNormal();
+				AimDirection = OutLaunchVelocity.GetSafeNormal();
 				MoveBarrelTowards(AimDirection);
 			}
+
+			
 		//if no solution is found do nothing
 }
 
@@ -77,8 +94,6 @@ void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)
 
 void UTankAimingComponent::Fire()
 {
-
-
 	if (FiringState != EFiringState::Reloading)
 	{
 		//spawn projectile at socket location from barrel
@@ -90,6 +105,7 @@ void UTankAimingComponent::Fire()
 			Barrel->GetSocketRotation(FName("Projectile"))
 			);
 		Projectile->LaunchProjectile(LaunchSpeed);
-		LastFireTime = FPlatformTime::Seconds();
+		LastFireTime = GetWorld()->GetTimeSeconds();
 	}
 }
+
