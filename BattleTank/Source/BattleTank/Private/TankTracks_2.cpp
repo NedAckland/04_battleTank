@@ -2,11 +2,22 @@
 
 #include "TankTracks_2.h"
 
+void UTankTracks_2::BeginPlay()
+{
+	Super::BeginPlay();
+	OnComponentHit.AddDynamic(this, &UTankTracks_2::OnHit);
+}
 
+
+void UTankTracks_2::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, UPrimitiveComponent* OtherComponent, FVector NormalImpulse, const FHitResult& Hit)
+{
+	UE_LOG(LogTemp, Warning, TEXT ("HITTTT HITTTTT"))
+}
 
 UTankTracks_2::UTankTracks_2()
 {
 	PrimaryComponentTick.bCanEverTick = true;
+
 }
 
 void UTankTracks_2::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction * ThisTickFunction)
