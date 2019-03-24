@@ -1,9 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
 #include "TankTracks_2.h"
 #include "Engine/World.h"
-
 
 void UTankTracks_2::BeginPlay()
 {
@@ -20,6 +18,7 @@ void UTankTracks_2::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor,
 {
 	DriveTrack();
 	ApplySidewaysForce();
+	CurrentThrottle = 0;
 }
 
 void UTankTracks_2::ApplySidewaysForce()
