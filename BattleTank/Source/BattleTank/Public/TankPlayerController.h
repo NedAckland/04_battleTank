@@ -40,6 +40,7 @@ private:
 	UFUNCTION()
 	void OnPossessedTankDeath();
 
+
 	UPROPERTY(EditDefaultsOnly)
 	float CrosshairXLocation = 0.5f;
 

@@ -26,6 +26,7 @@ void ATankPlayerController::Tick(float DeltaTime )
 
 void ATankPlayerController::SetPawn(APawn* InPawn)
 {
+	if (!InPawn) { return; }
 	Super::SetPawn(InPawn);
 	if (InPawn)
 	{
@@ -39,8 +40,9 @@ void ATankPlayerController::SetPawn(APawn* InPawn)
 
 void  ATankPlayerController::OnPossessedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("recived"));
+	StartSpectatingOnly();
 }
+	
 
 
 void ATankPlayerController::AimTowardsCrosshair()

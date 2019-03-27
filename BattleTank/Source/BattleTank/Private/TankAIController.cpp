@@ -6,6 +6,7 @@
 #include "GameFramework/Controller.h"
 #include "GameFramework/PlayerController.h"
 #include "Tank.h"
+#include "GameFramework/Pawn.h"
 
 //depends on movement component via pathfinding system
 
@@ -30,7 +31,9 @@ void ATankAIController::SetPawn(APawn* InPawn)
 
 void ATankAIController::OnPossessedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("recived"));
+	if (!GetPawn()) { return; }
+	GetPawn()->DetachFromControllerPendingDestroy();
+
 }
 
 void ATankAIController::Tick(float DeltaTime)
