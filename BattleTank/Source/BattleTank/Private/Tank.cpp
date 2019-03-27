@@ -5,6 +5,11 @@
 #include "Math/UnrealMathUtility.h"
 #include "GameFramework/Actor.h"
 
+float ATank::GetHealthPercent() const
+{
+	return (float)CurrentHealth/ (float)StartingHealth;
+}
+
 // Sets default values
 ATank::ATank()
 {
