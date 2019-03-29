@@ -36,6 +36,4 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Health")
 	int32 CurrentHealth; //initialisede in begin play
-
-
 };

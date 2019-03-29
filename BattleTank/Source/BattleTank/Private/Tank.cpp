@@ -31,8 +31,6 @@ float ATank::TakeDamage (float DamageAmount, struct FDamageEvent const & DamageE
 	{ 
 		OnDeath.Broadcast();
 	}
-		
 	return DamageToApply;
-
 }
 
