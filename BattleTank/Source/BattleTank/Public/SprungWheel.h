@@ -29,10 +29,11 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+
+
 private:
 	//components
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	UStaticMeshComponent* Mass = nullptr;
+	void SetupConstraint();
 	
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UStaticMeshComponent* Wheel = nullptr;
