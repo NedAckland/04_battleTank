@@ -44,7 +44,7 @@ private:
 
 	//components
 	UPROPERTY(VisibleAnywhere, Category = "Components")
-	UStaticMeshComponent* Wheel = nullptr;
+	USphereComponent* Wheel = nullptr;
 
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
