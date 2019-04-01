@@ -1,13 +1,10 @@
 // Copyright Foxwoods Studio's
 
 #include "SprungWheel.h"
-
 #include "Engine/World.h"
-
 #include "Components/SphereComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "PhysicsEngine/PhysicsConstraintComponent.h"
-
 
 // Sets default values
 ASprungWheel::ASprungWheel()
@@ -27,7 +24,6 @@ ASprungWheel::ASprungWheel()
 
 	AxleWheelConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("AxleWheelConstraint"));
 	AxleWheelConstraint->SetupAttachment(Axle);
-
 }
 
 // Called when the game starts or when spawned
@@ -50,7 +46,6 @@ void ASprungWheel::Tick(float DeltaTime)
 	{
 		TotalForceMagnitudeThisFrame = 0;
 	}
-
 }
 
 void ASprungWheel::SetupConstraint()
