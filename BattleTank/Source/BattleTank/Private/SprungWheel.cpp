@@ -11,6 +11,7 @@ ASprungWheel::ASprungWheel()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.TickGroup = TG_PostPhysics;
 
 	MassWheelConstraint = CreateDefaultSubobject<UPhysicsConstraintComponent>(FName("Mass Wheel Constraint"));
 	SetRootComponent(MassWheelConstraint);
@@ -41,11 +42,12 @@ void ASprungWheel::BeginPlay()
 void ASprungWheel::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 	if (GetWorld()->TickGroup == TG_PostPhysics)
 	{
 		TotalForceMagnitudeThisFrame = 0;
 	}
+	//UE_LOG(LogTemp, Warning, TEXT("Tick %f"), GetWorld()->GetTimeSeconds())
 }
 
 void ASprungWheel::SetupConstraint()
