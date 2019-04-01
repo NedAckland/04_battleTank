@@ -28,6 +28,7 @@ protected:
 private:
 	//config
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	TSubclassOf<AActor> SpawnClass;
 
 	UPROPERTY()
 	AActor* SpawnedActor;

@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-
 #include "SprungWheel.generated.h"
 
 // Forward declaration(s)
